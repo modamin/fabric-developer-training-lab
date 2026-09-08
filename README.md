@@ -67,6 +67,17 @@ Security── fixed identity · SSO off · RLS by HR region
 | `notebooks/nb_03b_gold_fact_asof.ipynb` | Module 3 | PySpark |
 | `notebooks/nb_03c_copilot_explore.ipynb` | Module 3b (Copilot chat pane) | PySpark |
 
+### Solutions vs. labs
+
+The notebooks above (and `setup/nb_00_generate_source_data.ipynb`) are the
+**solutions** set — fully worked, ready to run. A parallel **labs** set lives
+under `labs/`, mirroring the same paths (e.g. `labs/notebooks/nb_02_silver_conform_dedup.ipynb`).
+In the labs set every code cell has been cleared to `# TODO` comments, and the
+markdown cell above each one explains the objective and approach so you can
+write the code yourself. Use `solutions/` (i.e. `notebooks/` and `setup/`) as
+the answer key if you get stuck, or to run the pipeline end-to-end without
+doing the exercises.
+
 ## Prerequisites
 
 - A Fabric capacity **F2 or higher** (or Power BI Premium P1+). The data agent
