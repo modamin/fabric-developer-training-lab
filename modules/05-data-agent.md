@@ -40,7 +40,8 @@ Rules:
 - Aggregate only. NEVER return an individual employee's name or salary, and never
   list individuals. If asked for a person's pay, decline and offer the aggregate
   for their classification or team instead.
-`
+```
+
 ## 5.4 Test it (~5 min)
 
 1. *"What is our average compa-ratio as-was vs as-is?"*
