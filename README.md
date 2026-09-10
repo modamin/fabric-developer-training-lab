@@ -35,7 +35,7 @@ Gold    ── dim_date · dim_cost_center (SCD1)
            fact_workforce_event (as-of surrogate resolution + compa-ratio)
 Model   ── Direct Lake on OneLake · compa-ratio as-was/as-is measures · Prep for AI
 Agent   ── Fabric data agent over the model
-Security── fixed identity · SSO off · RLS by HR region
+Security── fixed identity · SSO comparison · OneLake RLS by directorate
 ```
 
 ## Modules
@@ -49,7 +49,7 @@ Security── fixed identity · SSO off · RLS by HR region
 | 3b | `modules/03b-copilot-notebook-lab.md` | generate queries with the Copilot chat pane | 15 min |
 | 4 | `modules/04-semantic-model.md` | Direct Lake on OneLake + DAX | 35 min |
 | 5 | `modules/05-data-agent.md` | data agent over the model | 25 min |
-| 6 | `modules/06-security-fixed-identity.md` | fixed identity + RLS | 25 min |
+| 6 | `modules/06-security-fixed-identity.md` | fixed identity + OneLake security | 40 min |
 |   | `modules/99-troubleshooting.md` | common failures | — |
 |   | `modules/cleanup.md` | tear down | 5 min |
 

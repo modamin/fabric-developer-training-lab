@@ -79,4 +79,4 @@ Delta files — which they can't read, and which you don't want to grant, becaus
 those files *are* the raw salaries. **Fixed identity** (Module 6) is how you give
 them the model without the lake.
 
-➡️ Continue to **Module 6 — Fixed identity & RLS**.
+➡️ Continue to **Module 6 — Fixed identity, SSO & OneLake security**.

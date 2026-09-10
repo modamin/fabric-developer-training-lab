@@ -87,10 +87,24 @@ and add an example Q&A pair.
 connection isn't bound, or SSO is still **on** (still querying as the user).
 Re-check 6.1–6.2.
 
-**Fixed identity itself can't read the data.** The SPN/managed identity needs
-**ReadData** on `lh_meridian_hr` (or Viewer on the workspace). The *fixed*
-principal must have lakehouse access — the end users must not.
+**OAuth fixed identity can't read the data.** Confirm the connection uses
+**OAuth 2.0**, its signed-in student account still has **Read** and **ReadAll**
+on `lh_meridian_hr`, and the semantic model owner can also read the source. The
+fixed student account needs lakehouse access; consumers must not.
 
-**RLS doesn't restrict.** You filtered a table the fact doesn't filter through, or
-tested as an admin (admins bypass RLS). Use **View as role** or a real second
-account, and filter `dim_cost_center[hr_region]`.
+**Queries still run as each consumer.** SSO is enabled. Edit or recreate the
+OAuth cloud connection with **Single sign-on through Microsoft Entra ID** off,
+then map the semantic model to that connection again.
+
+**Peer's report fails after SSO is enabled.** Grant the peer **Read** on the
+lakehouse and add them to the OneLake `FieldOperationsReader` role. Confirm the
+role includes every Gold table used by the semantic model.
+
+**Peer sees every directorate.** The peer has a broader grant. Remove them from
+workspace Admin, Member, or Contributor roles and remove **ReadAll**,
+`DefaultReader`, or other unrestricted OneLake role membership. Test with the
+peer's own account, not the model author's account.
+
+**OneLake row-security rule returns no data.** Use SQL syntax and the exact
+Delta table and column names:
+`SELECT * FROM gold.dim_worker WHERE directorate = 'Field Operations'`.

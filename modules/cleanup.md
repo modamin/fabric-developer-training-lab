@@ -12,13 +12,13 @@
    ```
    and delete `Files/landing/` in the lakehouse.
 
-3. **Fixed-identity connection & SPN:** if you created a dedicated service
-   principal and cloud connection for Module 6, remove the connection under
-   **Manage connections and gateways**, and delete/disable the SPN in Entra ID if
-   it was lab-only.
+3. **OAuth fixed-identity connection:** remove
+   `conn_meridian_onelake_oauth` under **Manage connections and gateways**. The
+   lab uses your student account, so there is no service principal or managed
+   identity to delete.
 
 4. **Capacity:** if you started a trial/paid F-capacity just for this lab, pause
    or delete it in the Azure portal so it stops billing.
 
-Nothing in this lab touches anything outside the workspace except the optional
-service principal in step 3.
+The OAuth cloud connection in step 3 is the only lab artifact outside the
+workspace.
