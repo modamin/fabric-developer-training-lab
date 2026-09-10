@@ -40,22 +40,7 @@ Rules:
 - Aggregate only. NEVER return an individual employee's name or salary, and never
   list individuals. If asked for a person's pay, decline and offer the aggregate
   for their classification or team instead.
-```
-
-> The confidentiality rule isn't decoration — compensation data is exactly what a
-> data agent could leak. Module 6 enforces it at the data layer; this enforces it
-> at the answer layer.
-
-## 5.3 Add example Q&A pairs (~5 min)
-
-| Question | Guidance |
-|----------|----------|
-| "What's our average compa-ratio, and how does it look against today's grid?" | **Avg Compa-Ratio (as-was)** + **(as-is)** + **Compa-Ratio Drift**. |
-| "How many promotions in the Pacific region last year?" | **Promotions**, filter `dim_cost_center[hr_region]` and `dim_date[year]`. |
-| "Which classification groups have the most below-band pay?" | Rank groups by **% Below Band (as-was)**. |
-| "What's net movement by region this fiscal year?" | **Net Movement** by `hr_region` over `fiscal_year`. |
-| "Show performance pay by directorate." | **Performance Pay CAD** by `dim_worker[directorate]`. |
-
+`
 ## 5.4 Test it (~5 min)
 
 1. *"What is our average compa-ratio as-was vs as-is?"*
