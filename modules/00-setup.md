@@ -14,4 +14,11 @@ Downloads all notebooks in the notebooks folder.
 Go to your workspace > Import > from computer > Select the notebooks. 
 
 
-➡️ Continue to **Module 1 — Bronze ingestion**.
+➡️ Choose one Bronze ingestion path:
+
+- [Module 1 — Pipeline + notebook](01-bronze-ingestion.md): incremental event
+  ingestion with a pipeline, plus reference feeds in a notebook.
+- [Module 01-a — Notebooks only](01-a-bronze-ingestion-notebooks.md): full
+  snapshot ingestion of events and reference feeds without a pipeline.
+
+Both paths continue to [Module 2 — Silver](02-silver.md).

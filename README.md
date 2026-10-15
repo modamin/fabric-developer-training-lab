@@ -27,7 +27,7 @@ with pay amounts in local currency and CAD.
 ## What you build
 
 ```
-Bronze  ── pipeline (60 monthly event extracts) + notebook (nested pay-grid JSON, FX, masters)
+Bronze  ── choose pipeline + notebook OR notebooks only (60 monthly extracts, pay-grid JSON, FX, masters)
 Silver  ── dedup replays · conform ISO-2/ISO-3 work country · quarantine · convert to CAD
 Gold    ── dim_date · dim_cost_center (SCD1)
            dim_pay_band (SCD2 from a history feed)
@@ -44,6 +44,7 @@ Security── fixed identity · SSO comparison · OneLake RLS by directorate
 |---|------|-------|------|
 | 0 | `modules/00-setup.md` | workspace, lakehouse, host the data | 15 min |
 | 1 | `modules/01-bronze-ingestion.md` | pipeline + notebook ingestion | 45 min |
+| 01-a | [modules/01-a-bronze-ingestion-notebooks.md](modules/01-a-bronze-ingestion-notebooks.md) | alternative: notebooks-only ingestion | 30 min |
 | 2 | `modules/02-silver.md` | dedup, conform, quarantine, FX | 40 min |
 | 3 | `modules/03-gold-scd2.md` | dimensions, **SCD2**, as-of fact | 55 min |
 | 3b | `modules/03b-copilot-notebook-lab.md` | generate queries with the Copilot chat pane | 15 min |
@@ -53,6 +54,10 @@ Security── fixed identity · SSO comparison · OneLake RLS by directorate
 |   | `modules/99-troubleshooting.md` | common failures | — |
 |   | `modules/cleanup.md` | tear down | 5 min |
 
+Choose **Module 1 or Module 01-a**, not both in the same lakehouse, then continue
+to Module 2. Module 1 demonstrates incremental pipeline ingestion; Module 01-a
+reloads a full snapshot with the shared ingestion notebook.
+
 ## Notebooks
 
 | Notebook | Used in | Kernel |
@@ -61,7 +66,7 @@ Security── fixed identity · SSO comparison · OneLake RLS by directorate
 | `notebooks/nb_00_setup_lakehouse.ipynb` | Module 1 target-table setup | PySpark |
 | `notebooks/nb_00_setup_watermark.ipynb` | Module 1 incremental watermark | PySpark |
 | `notebooks/nb_00_list_event_files.ipynb` | Module 1 incremental file discovery | PySpark |
-| `notebooks/nb_01_ingest_reference_feeds.ipynb` | Module 1 | PySpark |
+| [notebooks/nb_01_ingest_reference_feeds.ipynb](notebooks/nb_01_ingest_reference_feeds.ipynb) | Module 1 reference feeds; Module 01-a all sources (`INGEST_EVENTS = True`) | PySpark |
 | `notebooks/nb_02_silver_conform_dedup.ipynb` | Module 2 | PySpark |
 | `notebooks/nb_03a_gold_dimensions_scd2.ipynb` | Module 3 | PySpark |
 | `notebooks/nb_03b_gold_fact_asof.ipynb` | Module 3 | PySpark |

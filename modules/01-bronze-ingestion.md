@@ -1,5 +1,10 @@
 # Module 1 — Bronze ingestion (45 min)
 
+> Prefer a notebook-only path? Complete
+> [Module 01-a — Bronze ingestion with notebooks only](01-a-bronze-ingestion-notebooks.md)
+> instead of this module. Both paths produce the Bronze tables needed for Silver;
+> choose one path per lakehouse.
+
 **Goal:** land raw source data in the `bronze` schema exactly as it arrives — no
 cleaning. Two ingestion styles, chosen for what each is good at:
 
@@ -129,10 +134,11 @@ the final three files (`2025-10`, `2025-11`, `2025-12`) between runs.
 
 ## Part B — Notebook: pay-grid feed, FX, reference masters (20 min)
 
-1. Import **`nb_01_ingest_reference_feeds.ipynb`**.
+1. Import [nb_01_ingest_reference_feeds.ipynb](../notebooks/nb_01_ingest_reference_feeds.ipynb).
 2. **Attach** `lh_meridian_hr` as the default lakehouse (📎). Required for the
    `Files/…` paths and `bronze.*` names to resolve.
-3. Set `BASE` in the first cell to your raw base URL.
+3. Set `BASE` in the configuration cell to your raw base URL. Leave
+   `INGEST_EVENTS = False` to preserve the pipeline-loaded events.
 4. **Run all**. The notebook:
    - downloads the feeds into `Files/landing/…`
    - **explodes** the nested `band_history` array → `bronze.pay_bands` (one row
@@ -153,4 +159,4 @@ spark.table("bronze.pay_bands").filter("classification_group='PA' AND classifica
 You should see the PA-3 band midpoint step up each year — that history is the
 whole point of Module 3.
 
-➡️ Continue to **Module 2 — Silver**.
+➡️ Continue to [Module 2 — Silver](02-silver.md).
